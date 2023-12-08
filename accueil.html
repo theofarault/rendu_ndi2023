@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv= "content-type" content= "text/html; charset=UTF-8" >
+        
+        <title>La magie de Noël</title>
+
+
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        
+        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+        <style>
+            body{
+                background: linear-gradient(to bottom, #f7fbfd,#f7fbfd,#f7fbfd,#f7fbfd, rgb(161, 1, 1));
+                /* height: 200vh; */
+            }
+
+            .calendrier{
+                overflow-x: auto; 
+            }
+            .cal-btn{
+                background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    margin: 10px;
+            }
+
+            .cal-btn img{
+                width: 300px; /* Nouvelle largeur de l'image */
+            height: 300px; /* Nouvelle hauteur de l'image */
+            }
+
+            .cal-btn:hover{
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Ajout de l'ombre lors du survol */
+    
+            }
+
+            .cal-btn:disabled {
+      background-color: #7f8c8d;
+      cursor: not-allowed;
+    }
+
+    .cal-btn:disabled img{
+        opacity: 0.5;
+      
+    }
+    #countdown {
+      font-size: 30px;
+      text-align: center;
+      margin: 10px;
+      border: 2px;
+      z-index: 1;
+      position: absolute;
+    }
+
+        </style>
+
+        <script>
+             // Date de fin du compte à rebours (24 décembre 2023 à 23h59)
+  const endDate = new Date("December 24, 2023 23:59:00").getTime();
+
+// Mettez à jour le compte à rebours toutes les secondes
+const x = setInterval(function() {
+
+  // Obtenez la date et l'heure actuelles
+  const now = new Date().getTime();
+
+  // Calculez la différence entre la date de fin et la date actuelle
+  const distance = endDate - now;
+
+  // Calculez les jours, heures, minutes et secondes restantes
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Affichez le compte à rebours dans l'élément avec l'id "countdown"
+  document.getElementById("countdown").innerHTML = `
+    ${days} jour(s) 
+    ${hours} heure(s) 
+    ${minutes} minute(s) 
+    ${seconds} seconde(s)
+  `;
+
+  // Si le compte à rebours est terminé, affichez un message
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "Le compte à rebours est terminé!";
+  }
+}, 1000);
+        </script>
+
+    </head>
+
+    <body>
+        
+        <div id="countdown"></div>
+
+
+
+        <nav id="titre" class="navbar">
+            <!-- Navbar content -->
+            <div class="container">
+                
+                <div class="row col-12">
+                    <div class="d-flex justify-content-center">
+                        <h1 id="h1-titre" class="fs-1 fw-bold " style="color: #185da2; font-size: 30px;">La magie de Noël !</h1>
+                    </div>        
+                </div>      
+            </div>
+        </nav>
+
+
+        <div class="container">
+            <img src="/src/images/image1.png">
+        </div>
+
+
+        <div class="container">
+
+            <div class="row pt-5 pb-2">
+                
+                    <div class="container">
+                        
+                        <div class="row">
+                            <h2 class="text-center">Revivez des expériences avec notre calendrier interactif</h2>
+                        </div>
+    
+                        <div class="row">
+                            <p class="text-center">Clique sur une case !</p>
+                        </div>   
+                    </div>
+                    
+            
+            </div>
+
+            
+
+
+            <div class="row justify-content-center" id="calendrier">
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour1" onclick="desactiverBouton('jour1')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour1.png" alt="Jour 1 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour2"  onclick="desactiverBouton('jour2')" data-bs-toggle="modal" data-bs-target="#myModal">
+                            
+                            <img src="src/images/jour2.png" alt="Jour 2 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div>
+                        <button class="cal-btn" id="jour3"  onclick="desactiverBouton('jour3')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour3.png" alt="Jour 3 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div>
+                        <button class="cal-btn" id="jour4"  onclick="desactiverBouton('jour4')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour4.png" alt="Jour 4 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour5"  onclick="desactiverBouton('jour5')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour5.png" alt="Jour 5 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour6"  onclick="desactiverBouton('jour6')" data-bs-toggle="modal" data-bs-target="#myModal">
+                            
+                            <img src="src/images/jour6.png" alt="Jour 8 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour7"  onclick="desactiverBouton('jour7')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour7.png" alt="Jour 7 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour8"  onclick="desactiverBouton('jour8')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour8.png" alt="Jour 8 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour9"  onclick="desactiverBouton('jour9')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour9.png" alt="Jour 9 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour10"  onclick="desactiverBouton('jour10')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour10.png" alt="Jour 10 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour11"  onclick="desactiverBouton('jour11')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour11.png" alt="Jour 11 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour12"  onclick="desactiverBouton('jour12')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour12.png" alt="Jour 12 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour13"  onclick="desactiverBouton('jour13')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour13.png" alt="Jour 13 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour14"  onclick="desactiverBouton('jour14')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour14.png" alt="Jour 14 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour15"  onclick="desactiverBouton('jour15')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour15.png" alt="Jour 15 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour16"  onclick="desactiverBouton('jour16')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour16.png" alt="Jour 16 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour17"  onclick="desactiverBouton('jour17')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour17.png" alt="Jour 17 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour18"  onclick="desactiverBouton('jour18')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour18.png" alt="Jour 18 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour19"  onclick="desactiverBouton('jour19')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour19.png" alt="Jour 19 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour20"  onclick="desactiverBouton('jour20')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour20.png" alt="Jour 20 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour21"  onclick="desactiverBouton('jour21')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour21.png" alt="Jour 21 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour22"  onclick="desactiverBouton('jour22')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour22.png" alt="Jour 22 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour23"  onclick="desactiverBouton('jour23')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour23.png" alt="Jour 23 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour24"  onclick="desactiverBouton('jour24')" data-bs-toggle="modal" data-bs-target="#myModal">
+
+                            
+                            <img src="src/images/jour24.png" alt="Jour 24 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div>
+                        <button  class="cal-btn" id="jour25" >
+
+                            
+                            <img src="src/images/jour25.png" alt="Jour 25 du calendrier">
+                             
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="container pt-5">
+            <!-- <div class="row justify-content-center"> -->
+            <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+                <div class="col-md-12 d-flex align-items-center justify-content-center">
+                <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                    <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+                </a>
+                <span class="mb-3 mb-md-0 text-white fw-bold" style="font-size: 30px;">© 2023 - Site réalisé par Gabriel FERREIRA, Bryan CORRET et Théo FARAULT</span>
+                </div>
+
+                <!-- <ul class="nav col-md-2 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+                </ul> -->
+            </footer>
+      
+
+        <!-- </div> -->
+        </div>
+
+
+        <!-- Le Modal -->
+        <div class="modal fade" id="myModal"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-xl">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+            
+                    <div class="modal-body">
+
+
+                        <div id="modal_jour1" style="display: none;">
+                            <h5 class="modal-title">Jour 1</h5>
+                            <img src="/src/images/modal_jour1.png">
+                        </div>
+
+                        <div id="modal_jour2" style="display: none;">
+                            <h5 class="modal-title">Jour 2</h5>
+                            <img src="/src/images/modal_jour2.png">
+                        </div>
+                        
+                        <div id="modal_jour3" style="display: none;">
+                            <h5 class="modal-title">Jour 3</h5>
+                            <img src="/src/images/modal_jour3.png">
+                        </div>
+
+                        <div id="modal_jour4" style="display: none;">
+                            <h5 class="modal-title">Jour 4</h5>
+                            <img src="/src/images/modal_jour4.png">
+                        </div>
+
+                        <div id="modal_jour5" style="display: none;">
+                            <h5 class="modal-title">Jour 5</h5>
+                            <img src="/src/images/modal_jour5.png">
+                        </div>
+
+                        <div id="modal_jour6" style="display: none;">
+                            <h5 class="modal-title">Jour 6</h5>
+                            <img src="/src/images/modal_jour6.png">
+                        </div>
+
+                        <div id="modal_jour7" style="display: none;">
+                            <h5 class="modal-title">Jour 7 - Photo avec le père Noël</h5>
+                            <img src="/src/images/modal_jour7.png">
+                        </div>
+
+                        <div id="modal_jour8" style="display: none;">
+                            <h5 class="modal-title">Jour 8</h5>
+                            <!-- <img src="/src/images/modal_jour8.png"> -->
+                        </div>
+
+                        <div id="modal_jour9" style="display: none;">
+                            <h5 class="modal-title">Jour 9</h5>
+                            <!-- <img src="/src/images/modal_jour9.png"> -->
+                        </div>
+
+                        <div id="modal_jour10" style="display: none;">
+                            <h5 class="modal-title">Jour 10</h5>
+                            <!-- <img src="/src/images/modal_jour10.png"> -->
+                        </div>
+
+                        <div id="modal_jour11" style="display: none;">
+                            <h5 class="modal-title">Jour 11</h5>
+                            <!-- <img src="/src/images/modal_jour11.png"> -->
+                        </div>
+
+                        <div id="modal_jour12" style="display: none;">
+                            <h5 class="modal-title">Jour 12</h5>
+                            <!-- <img src="/src/images/modal_jour12.png"> -->
+                        </div>
+
+                        <div id="modal_jour13" style="display: none;">
+                            <h5 class="modal-title">Jour 13</h5>
+                            <!-- <img src="/src/images/modal_jour13.png"> -->
+                        </div>
+
+                        <div id="modal_jour14" style="display: none;">
+                            <h5 class="modal-title">Jour 14</h5>
+                            <!-- <img src="/src/images/modal_jour14.png"> -->
+                        </div>
+
+                        <div id="modal_jour15" style="display: none;">
+                            <h5 class="modal-title">Jour 15</h5>
+                            <!-- <img src="/src/images/modal_jour15.png"> -->
+                        </div>
+
+                        <div id="modal_jour16" style="display: none;">
+                            <h5 class="modal-title">Jour 16</h5>
+                            <!-- <img src="/src/images/modal_jour16.png"> -->
+                        </div>
+
+                        <div id="modal_jour17" style="display: none;">
+                            <h5 class="modal-title">Jour 17</h5>
+                            <!-- <img src="/src/images/modal_jour17.png"> -->
+                        </div>
+
+                        <div id="modal_jour18" style="display: none;">
+                            <h5 class="modal-title">Jour 18</h5>
+                            <!-- <img src="/src/images/modal_jour18.png"> -->
+                        </div>
+
+                        <div id="modal_jour19" style="display: none;">
+                            <h5 class="modal-title">Jour 19</h5>
+                            <!-- <img src="/src/images/modal_jour19.png"> -->
+                        </div>
+
+                        <div id="modal_jour20" style="display: none;">
+                            <h5 class="modal-title">Jour 20</h5>
+                            <!-- <img src="/src/images/modal_jour20.png"> -->
+                        </div>
+
+                        <div id="modal_jour21" style="display: none;">
+                            <h5 class="modal-title">Jour 21</h5>
+                            <!-- <img src="/src/images/modal_jour9.png"> -->
+                        </div>
+
+                        <div id="modal_jour22" style="display: none;">
+                            <h5 class="modal-title">Jour 22</h5>
+                            <!-- <img src="/src/images/modal_jour22.png"> -->
+                        </div>
+
+                        <div id="modal_jour23" style="display: none;">
+                            <h5 class="modal-title">Jour 23</h5>
+                            <!-- <img src="/src/images/modal_jour23.png"> -->
+                        </div>
+
+                        <div id="modal_jour24" style="display: none;">
+                            <h5 class="modal-title">Jour 24</h5>
+                            <!-- <img src="/src/images/modal_jour24.png"> -->
+                            <canvas style="display: none" id="canvas"></canvas>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <script>
+            // Afficher le modal
+            function afficherModal(id_modal_content) {
+                $('#'+id_modal_content).css('display', 'block');
+                if (id_modal_content == "modal_jour24"){
+                    afficherModal_bry();
+                }
+            }
+
+            // Cacher tous les contenu modal
+
+            function cacher_all(){
+                let id_modal_content = "modal_jour" ; 
+
+                for (let id = 1; id <= 24; id++) {
+                    console.log(id);
+                    id_modal_content = id_modal_content + String(id);
+                    console.log(id_modal_content);
+                    
+                    document.getElementById(id_modal_content).style.display = "none";
+
+                    id_modal_content = "modal_jour";
+                }
+            }
+            
+
+            function desactiverBouton(id_bouton) {
+                cacher_all();
+              // Désactive le bouton
+              afficherModal("modal_" + String(id_bouton));
+              document.getElementById(id_bouton).disabled = true;
+            }
+
+// modal 3D
+      // Stocker la séquence de touches Konami
+      const konamiCode = [
+        "ArrowUp",
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowLeft",
+        "ArrowRight",
+        "b",
+        "a",
+      ];
+      let konamiCodePosition = 0;
+
+      // Fonction pour réinitialiser la position du code Konami
+      function resetKonamiCode() {
+        konamiCodePosition = 0;
+      }
+
+      // Fonction pour gérer les pressions de touche
+      function handleKeyPress(event) {
+        // Afficher la touche saisie dans la console
+        console.log("Touche saisie:", event.key);
+
+        // Vérifier si la touche pressée correspond à la position actuelle dans le code Konami
+        if (event.key === konamiCode[konamiCodePosition]) {
+          konamiCodePosition++;
+
+          // Vérifier si l'ensemble du code Konami a été saisi
+          if (konamiCodePosition === konamiCode.length) {
+            // Afficher un message dans la console
+            console.log("Combinaison Konami réussie : true");
+            // Afficher le modal
+            afficherModal_bry();
+
+            // Réinitialiser la position du code Konami pour une utilisation future
+            resetKonamiCode();
+          }
+        } else {
+          // Réinitialiser la position du code Konami si la touche pressée est incorrecte
+          resetKonamiCode();
+
+          // Afficher un message dans la console
+          console.log("Combinaison Konami réussie : false");
+        }
+      }
+
+      // Fonction pour afficher le modal
+      function afficherModal_bry() {
+        const canvas = document.getElementById("canvas");
+        canvas.style.display = "block";
+      }
+
+
+
+      document.addEventListener("keydown", handleKeyPress);
+
+
+        </script>
+
+
+
+<script src="https://threejs.org/build/three.js"></script>
+<script type="module">
+    import { TTFLoader } from 'three/examples/jsm/loaders/TTFLoader';
+    import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
+    import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
+
+    document.addEventListener('keydown', onKeyDown, false);
+    document.addEventListener('keyup', onKeyUp, false);
+
+    const rotationSpeed = 0.02;
+    let rotationAngle = 0;
+    const movementSpeed = 0.1;
+    const arrowKeys = { GAUCHE: "KeyA", AVANCER: "KeyW", DROITE: "KeyD", RECULER: "KeyS", HAUT: "ShiftLeft", BAS: "ControlLeft" };
+    const moveDirection = new THREE.Vector3();
+    function onKeyDown(event) {
+        switch (event.code) {
+            case arrowKeys.AVANCER:
+                moveDirection.z = -1;
+                break;
+            case arrowKeys.RECULER:
+                moveDirection.z = 1;
+                break;
+            case arrowKeys.GAUCHE:
+                moveDirection.x = -1;
+                break;
+            case arrowKeys.DROITE:
+                moveDirection.x = 1;
+                break;
+            case arrowKeys.HAUT:
+                moveDirection.y = 1;
+                break;
+            case arrowKeys.BAS:
+                moveDirection.y = -1;
+                break;
+        }
+    }
+
+    function onKeyUp(event) {
+        switch (event.code) {
+            case arrowKeys.AVANCER:
+            case arrowKeys.RECULER:
+                moveDirection.z = 0;
+                break;s
+            case arrowKeys.GAUCHE:
+            case arrowKeys.DROITE:
+                moveDirection.x = 0;
+                break;
+            case arrowKeys.HAUT:
+            case arrowKeys.BAS:
+                moveDirection.y = 0;
+                break;
+        }
+    }
+
+    function updateCameraPosition() {
+        const moveVector = new THREE.Vector3(moveDirection.x, moveDirection.y, moveDirection.z);
+        const rotationEuler = new THREE.Euler(0, rotationAngle, 0, 'YXZ');
+        moveVector.applyEuler(rotationEuler);
+
+        camera.position.add(moveVector.multiplyScalar(movementSpeed));
+
+        rotationAngle += moveDirection.x * rotationSpeed;
+
+        
+        camera.lookAt(scene.position);
+        
+    }
+
+    const iw = window.innerWidth;
+    const ih = window.innerHeight;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, iw / ih, 0.1, 1000);
+    camera.position.set(0, 0, 5);
+
+    const renderer = new THREE.WebGLRenderer({
+        canvas: document.getElementById("canvas"),
+    });
+    renderer.setSize(iw, ih);
+    renderer.shadowMap.enabled = true;
+
+    document.body.appendChild(renderer.domElement);
+
+    // Ajouter le tronc du sapin
+    const trunkGeometry = new THREE.CylinderGeometry(0.1, 0.3, 2, 32);
+    const trunkMaterial = new THREE.MeshPhongMaterial({ color: 0x582900 }); // Marron
+    const trunk = new THREE.Mesh(trunkGeometry, trunkMaterial);
+    trunk.castShadow = true; // IMPORTANT FOR SHADOWS !!!
+    scene.add(trunk);
+
+    // Ajouter le sol (de couleur blanche)
+    const groundGeometry = new THREE.PlaneGeometry(10, 10);
+    const groundMaterial = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        side: THREE.DoubleSide,
+    }); // Blanc
+    const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+    ground.rotation.x = Math.PI / 2; // Tourner le sol pour qu'il soit horizontal
+    ground.position.y = -1; // Positionner le sol en dessous du sapin
+    ground.castShadow = true;
+    scene.add(ground);
+
+    // Ajouter le cone du sapin (feuilles)
+    const coneMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00 }); // Vert
+    let largCone = 1.9;
+    let longCone = 1.1;
+    const cones = [];
+
+    for (let i = 0; i < 4; i++) {
+        const coneGeometry = new THREE.ConeGeometry(longCone, largCone, 25);
+        const cone = new THREE.Mesh(coneGeometry, coneMaterial);
+        cone.position.y = i * 0.5 + 0.5; // Ajuster la hauteur du cône
+        largCone -= 0.2;
+        longCone -= 0.15;
+        scene.add(cone);
+        cone.castShadow = true; // IMPORTANT FOR SHADOWS !!!
+
+        cones.push(cone);
+    }
+
+    //FORET AUTOUR
+    // Ajouter le cone du sapin (feuilles)
+    const coneSecondSapinMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00 }); // Vert
+    let largConeSecondSapin = 1.50;
+    let longConeSecondSapin = 1.10;
+    const conesSecondSapin = [];
+    const ListeCoordonneSapin = [
+        { x: -3.90, y: 0, z: 0 },
+        { x: -3.25, y: 0, z: -2 },
+        { x: -3.90, y: 0, z: -1 },
+        { x: -3, y: 0, z: -3.40 },
+        { x: -4.50, y: 0, z: -3 },
+        { x: -4, y: 0, z: -4.00 },
+        { x: -2, y: 0, z: -3.75 },
+        { x: -1, y: 0, z: -3.35 },
+        { x: 0, y: 0, z: -4 },
+        { x: 1, y: 0, z: -3.75 },
+        { x: 2, y: 0, z: -3.50 },
+        { x: 3, y: 0, z: -3 },
+        { x: 4, y: 0, z: -4.50 },
+        { x: 4, y: 0, z: -3.50 },
+        { x: 3.50, y: 0, z: -2 },
+        { x: 4.30, y: 0, z: -1 },
+        { x: 4.25, y: 0, z: 0 },
+        { x: 4.50, y: 0, z: 1 },
+    ]
+    for (let i = 0; i < 17; i++) {
+
+        // Ajouter le tronc du sapin
+        const newtrunkGeometry = new THREE.CylinderGeometry(0.1, 0.3, 2, 32);
+        const newtrunkMaterial = new THREE.MeshPhongMaterial({ color: 0x582900 }); // Marron
+        const newtrunk = new THREE.Mesh(newtrunkGeometry, newtrunkMaterial);
+        newtrunk.position.set(ListeCoordonneSapin[i].x, ListeCoordonneSapin[i].y, ListeCoordonneSapin[i].z)
+        newtrunk.castShadow = true;           // IMPORTANT FOR SHADOWS !!!
+        scene.add(newtrunk);
+
+        for (let w = 0; w < 3; w++) {
+            const coneSecondSapinGeometry = new THREE.ConeGeometry(longCone, largCone, 25);
+            const coneSecondSapin = new THREE.Mesh(coneSecondSapinGeometry, coneSecondSapinMaterial);
+            coneSecondSapin.position.set(ListeCoordonneSapin[i].x, ListeCoordonneSapin[i].y - 0.5 + w * 0.5 + 0.2, ListeCoordonneSapin[i].z); // Ajuster la hauteur du cône
+            largConeSecondSapin -= 0.20
+            longConeSecondSapin -= 0.15
+            scene.add(coneSecondSapin);
+            coneSecondSapin.castShadow = true;           // IMPORTANT FOR SHADOWS !!!
+            conesSecondSapin.push(coneSecondSapin);
+        }
+
+    }
+
+    // Ajouter le texte "Joyeux Noël" au sapin
+    const joyeuxNoelFontLoader = new FontLoader();
+    joyeuxNoelFontLoader.load(
+        './fonts/Roboto_Medium_Regular.json',
+        (joyeuxNoelFont) => {
+            const joyeuxNoelTextGeometry = new TextGeometry('Joyeux Noël', {
+                size: 0.5, // ajuster la taille selon vos besoins
+                height: 0.02, // ajuster la hauteur selon vos besoins
+                font: joyeuxNoelFont,
+            });
+            const joyeuxNoelTextMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Couleur rouge
+            const joyeuxNoelTextMesh = new THREE.Mesh(joyeuxNoelTextGeometry, joyeuxNoelTextMaterial);
+            joyeuxNoelTextMesh.position.set(-4, -0.8, 4); // ajuster la position selon vos besoins
+            scene.add(joyeuxNoelTextMesh);
+        }
+    );
+
+    // Ajouter le texte "#NDI2023" au sapin
+    const ndi2023FontLoader = new FontLoader();
+    ndi2023FontLoader.load(
+        './fonts/Roboto_Medium_Regular.json',
+        (ndi2023Font) => {
+            const ndi2023TextGeometry = new TextGeometry('#NDI2023', {
+                size: 0.5, // ajuster la taille selon vos besoins
+                height: 0.02, // ajuster la hauteur selon vos besoins
+                font: ndi2023Font,
+            });
+            const ndi2023TextMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff }); // Couleur bleue
+            const ndi2023TextMesh = new THREE.Mesh(ndi2023TextGeometry, ndi2023TextMaterial);
+            ndi2023TextMesh.position.set(1, -0.8,4 ); // ajuster la position selon vos besoins
+            scene.add(ndi2023TextMesh);
+        }
+    );
+
+    // Ajouter le texte "#NDI2023" au sapin
+    const TeamLoader = new FontLoader();
+    TeamLoader.load(
+        './fonts/Roboto_Medium_Regular.json',
+        (ndi2023Font) => {
+            const ndi2023TextGeometry = new TextGeometry('Team : Gabriel Ferreira / Théo Farault / Bryan Corret', {
+                size: 0.1, // ajuster la taille selon vos besoins
+                height: 0.02, // ajuster la hauteur selon vos besoins
+                font: ndi2023Font,
+            });
+            const ndi2023TextMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Couleur bleue
+            const ndi2023TextMesh = new THREE.Mesh(ndi2023TextGeometry, ndi2023TextMaterial);
+            ndi2023TextMesh.position.set(-1, -1,5 ); // ajuster la position selon vos besoins
+            scene.add(ndi2023TextMesh);
+        }
+    );
+
+
+    //POINTLIGHT , FOR SHADOWS
+    const colorFond = 0xff0000;
+    const intensityFond = 30;
+    const lightFond = new THREE.PointLight(colorFond, intensityFond);
+    // CADEAUX NOEL FOND DROITE
+    var cubeGeometryFondDroite = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+    var cubeMaterialFondDroite = new THREE.MeshPhongMaterial({ color: 0x0000ff }); // Bleu
+    var cubeFondDroite = new THREE.Mesh(cubeGeometryFondDroite, cubeMaterialFondDroite);
+    cubeFondDroite.castShadow = true; // IMPORTANT FOR SHADOWS !!!
+    cubeFondDroite.position.set(4.50, -1, -2); // Positionner le cube à une hauteur de 1 unité
+    scene.add(cubeFondDroite);
+    cubeFondDroite.add(lightFond)
+
+
+    //POINTLIGHT , FOR SHADOWS
+    const colorFond2 = 0xffffff;
+    const intensityFond2 = 3;
+    const lightFond2 = new THREE.PointLight(colorFond2, intensityFond2);
+    // CADEAUX NOEL FOND
+    var cubeGeometryFond = new THREE.BoxGeometry(0.50, 0.5, 0.5);
+    var cubeMaterialFond = new THREE.MeshPhongMaterial({ color: 0x0000ff }); // Bleu
+    var cubeFond = new THREE.Mesh(cubeGeometryFond, cubeMaterialFond);
+    cubeFond.castShadow = true; // IMPORTANT FOR SHADOWS !!!
+    cubeFond.position.set(3, -1, -4); // Positionner le cube à une hauteur de 1 unité
+    scene.add(cubeFond);
+    cubeFond.add(lightFond2)
+
+
+
+    //POINTLIGHT , FOR SHADOWS
+    const colorFond3 = 0xFFD700;
+    const intensityFond3 = 3;
+    const lightFond3 = new THREE.PointLight(colorFond3, intensityFond3);
+    // CADEAUX NOEL FOND
+    var cubeGeometryFondGauche = new THREE.BoxGeometry(0.50, 0.5, 0.5);
+    var cubeMaterialFondGauche = new THREE.MeshPhongMaterial({ color: 0x0000ff }); // Bleu
+    var cubeFondGauche = new THREE.Mesh(cubeGeometryFondGauche, cubeMaterialFondGauche);
+    cubeFondGauche.castShadow = true; // IMPORTANT FOR SHADOWS !!!
+    cubeFondGauche.position.set(-3, -1, -4.50); // Positionner le cube à une hauteur de 1 unité
+    scene.add(cubeFondGauche);
+    cubeFondGauche.add(lightFond3)
+
+
+    //POINTLIGHT , FOR SHADOWS
+    const colorFond4 = 0x0000ff;
+    const intensityFond4 = 30;
+    const lightFond4 = new THREE.PointLight(colorFond4, intensityFond4);
+    // CADEAUX NOEL FOND
+    var cubeGeometryFondGaucheAvant = new THREE.BoxGeometry(0.50, 1, 0.5);
+    var cubeMaterialFondGaucheAvant = new THREE.MeshPhongMaterial({ color: 0x0000ff }); // Bleu
+    var cubeFondGaucheAvant = new THREE.Mesh(cubeGeometryFondGaucheAvant, cubeMaterialFondGaucheAvant);
+    cubeFondGaucheAvant.castShadow = true; // IMPORTANT FOR SHADOWS !!!
+    cubeFondGaucheAvant.position.set(-4.50, -1, -2); // Positionner le cube à une hauteur de 1 unité
+    scene.add(cubeFondGaucheAvant);
+    cubeFondGaucheAvant.add(lightFond4)
+
+    // CADEAUX NOEL
+    var cubeGeometry = new THREE.BoxGeometry(0.25, 0.5, 0.5);
+    var cubeMaterial = new THREE.MeshPhongMaterial({ color: 0x0000ff }); // Bleu
+    var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    cube.castShadow = true; // IMPORTANT FOR SHADOWS !!!
+    cube.position.set(-1, -1, 0); // Positionner le cube à une hauteur de 1 unité
+    scene.add(cube);
+
+    // CADEAUX NOEL 2
+    var cubeGeometry = new THREE.BoxGeometry(0.25, 0.5, 0.5);
+    var cubeMaterial = new THREE.MeshPhongMaterial({ color: 0x0000ff }); // Bleu
+    var cube2 = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    cube2.castShadow = true; // IMPORTANT FOR SHADOWS !!!
+    cube2.position.set(1, -1, 0); // Positionner le cube à une hauteur de 1 unité
+    scene.add(cube2);
+
+    // CADEAUX NOEL 3
+    var cubeGeometry = new THREE.BoxGeometry(0.5, 0.25, 0.5);
+    var cubeMaterial = new THREE.MeshPhongMaterial({ color: 0x0000ff }); // Bleu
+    var cube3 = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    cube3.castShadow = true; // IMPORTANT FOR SHADOWS !!!
+    cube3.position.set(-0.25, -1, 2); // Positionner le cube à une hauteur de 1 unité
+    scene.add(cube3);
+
+    // CADEAUX NOEL 4
+    var cubeGeometry = new THREE.BoxGeometry(0.5, 0.25, 0.5);
+    var cubeMaterial = new THREE.MeshPhongMaterial({ color: 0x0000ff }); // Bleu
+    var cube4 = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    cube4.castShadow = true; // IMPORTANT FOR SHADOWS !!!
+    cube4.position.set(-0.25, -1, -2); // Positionner le cube à une hauteur de 1 unité
+    scene.add(cube4);
+
+    //Déco sapin
+    //Boule sapin
+
+    const listePositionBouleSapin = [];
+    const rayon = 0.96;
+    const hauteur = -0.16;
+    const nombrePoints = 15;
+
+    for (let i = 0; i < nombrePoints; i++) {
+        const angle = (i / nombrePoints) * 2 * Math.PI;
+        const x = rayon * Math.cos(angle);
+        const y = hauteur;
+        const z = rayon * Math.sin(angle);;
+
+        listePositionBouleSapin.push({ x, y, z });
+    }
+
+    const listePositionBouleSapin2 = [];
+    const rayon2 = 0.82;
+    const hauteur2 = 0.4;
+    const nombrePoints2 = 15;
+
+    for (let i = 0; i < nombrePoints2; i++) {
+        const angle = (i / nombrePoints2) * 2 * Math.PI;
+        const x = rayon2 * Math.cos(angle);
+        const y = hauteur2;
+        const z = rayon2 * Math.sin(angle);;
+
+        listePositionBouleSapin2.push({ x, y, z });
+    }
+
+    const listePositionBouleSapin3 = [];
+    const rayon3 = 0.65;
+    const hauteur3 = 1.08;
+    const nombrePoints3 = 15;
+
+    for (let i = 0; i < nombrePoints3; i++) {
+        const angle = (i / nombrePoints2) * 2 * Math.PI;
+        const x = rayon3 * Math.cos(angle);
+        const y = hauteur3;
+        const z = rayon3 * Math.sin(angle);;
+
+        listePositionBouleSapin3.push({ x, y, z });
+    }
+
+    const listePositionBouleSapin4 = [];
+    const rayon4 = 0.48;
+    const hauteur4 = 1.7;
+    const nombrePoints4 = 15;
+
+    for (let i = 0; i < nombrePoints4; i++) {
+        const angle = (i / nombrePoints2) * 2 * Math.PI;
+        const x = rayon4 * Math.cos(angle);
+        const y = hauteur4;
+        const z = rayon4 * Math.sin(angle);;
+
+        listePositionBouleSapin4.push({ x, y, z });
+    }
+
+
+    const couleursPossibles = [0xff0000, 0xffffff, 0xffff00];
+    let couleurIndex = 0;
+
+    function genererCouleurAleatoire() {
+        return couleursPossibles[Math.floor(Math.random() * couleursPossibles.length)];
+    }
+
+    function alternerCouleurs(liste) {
+        liste.forEach(function (position) {
+            const sphereGeometry = new THREE.SphereGeometry(0.05, 16, 16);
+            const couleurAleatoire = genererCouleurAleatoire();
+            const sphereMaterial = new THREE.MeshBasicMaterial({
+                color: couleurAleatoire,
+            });
+            const sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
+            sphereMesh.position.set(position.x, position.y, position.z);
+            sphereMesh.castShadow = true;
+            scene.add(sphereMesh);
+        });
+    }
+
+    // Appeler alternerCouleurs() initialement
+    alternerCouleurs(listePositionBouleSapin);
+    alternerCouleurs(listePositionBouleSapin2);
+    alternerCouleurs(listePositionBouleSapin3);
+    alternerCouleurs(listePositionBouleSapin4);
+
+    // Définir un intervalle pour appeler alternerCouleurs() toutes les x secondes (x étant aléatoire)
+    setInterval(function () {
+        // Supprimer les boules existantes de la scène
+        scene.children.forEach(child => {
+            if (child instanceof THREE.Mesh) {
+                const isChildInList = [listePositionBouleSapin, listePositionBouleSapin2, listePositionBouleSapin3, listePositionBouleSapin4].some(liste => {
+                    return liste.some(position => {
+                        return position.x === child.position.x && position.y === child.position.y && position.z === child.position.z;
+                    });
+                });
+
+                if (isChildInList) {
+                    scene.remove(child);
+                }
+            }
+        });
+        alternerCouleurs(listePositionBouleSapin);
+        alternerCouleurs(listePositionBouleSapin2);
+        alternerCouleurs(listePositionBouleSapin3);
+        alternerCouleurs(listePositionBouleSapin4);
+    }, Math.random() * 2000);
+
+    ////////////////////
+    ///////////////////
+    // Fonction pour créer un cadeau de Noël
+    function createGift(geometry, texturePath, position) {
+        const texture = new THREE.TextureLoader().load(texturePath);
+        const material = new THREE.MeshPhongMaterial({ map: texture });
+        const gift = new THREE.Mesh(geometry, material);
+        gift.castShadow = true;
+        gift.position.set(...position);
+        scene.add(gift);
+    }
+
+    // CADEAUX NOEL 1
+    const cubeGeometry1 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+    createGift(cubeGeometry1, "kdo.jpg", [-1, -1, 0]);
+
+    // CADEAUX NOEL 2
+    const cubeGeometry2 = new THREE.BoxGeometry(0.25, 0.15, 0.5);
+    createGift(cubeGeometry2, "kdo5.jpg", [1, -1, 0]);
+
+    // CADEAUX NOEL 3
+    const cubeGeometry3 = new THREE.BoxGeometry(0.25, 0.5, 0.25);
+    createGift(cubeGeometry3, "kdo2.jpg", [-0.25, -1, 2]);
+
+    // CADEAUX NOEL 4
+    const cubeGeometry4 = new THREE.BoxGeometry(0.5, 0.25, 0.5);
+    createGift(cubeGeometry4, "kdo3.jpg", [-0.25, -1, -2]);
+
+    // Tour de cadeaux
+    const cubeGeometry5 = new THREE.BoxGeometry(0.55, 0.25, 0.5);
+    const cubeGeometry6 = new THREE.BoxGeometry(0.35, 0.15, 0.5);
+    const cubeGeometry7 = new THREE.BoxGeometry(0.5, 0.35, 0.5);
+    const cubeGeometry8 = new THREE.BoxGeometry(0.5, 0.8, 0.5);
+    // kdo cote a cote
+    createGift(cubeGeometry5, "kdo.jpg", [0.5, -0.96, 2]);
+    createGift(cubeGeometry6, "kdo5.jpg", [1.43, -0.93, 2]);
+    createGift(cubeGeometry7, "kdo2.jpg", [1, -0.85, 2.5]);
+    createGift(cubeGeometry8, "kdo3.jpg", [1, -0.7, 2]);
+
+
+    ///////////////////
+    //////////////////
+
+    // Ajouter les flocons de neige
+    const snowflakes = [];
+
+    const snowflakeGeometry = new THREE.SphereGeometry(0.05, 32, 32);
+    const snowflakeMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
+
+    var ambientLight = new THREE.AmbientLight(0xcccccc, 0.09);
+    scene.add(ambientLight);
+
+    const texture = new THREE.TextureLoader().load("neige_sol.jpg");
+
+    //POINTLIGHT , FOR SHADOWS
+    const color = 0xffff00;
+    const intensity = 2;
+    const light = new THREE.PointLight(color, intensity);
+    /////////étoile
+    const starGeometry = new THREE.DodecahedronGeometry();
+    const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+    const star = new THREE.Mesh(starGeometry, starMaterial);
+    star.position.set(0, 2.7, 0);
+    star.scale.set(0.3, 0.3, 0.3);
+    star.castShadow = true; // IMPORTANT FOR SHADOWS !!!
+    scene.add(star);
+    star.add(light);
+    // Matériaux pour les flocons de neige lumineux
+
+    function createSnowflake() {
+        // Choisissez aléatoirement le matériau entre blanc et doré
+        const snowflakeGeometry = new THREE.SphereGeometry(0.05, 5, 5); // Paramètres : rayon, nombre de segments en largeur, nombre de segments en hauteur
+        const snowflakeMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
+        const snowflake = new THREE.Mesh(snowflakeGeometry, snowflakeMaterial);
+
+        // Ajouter de la variabilité à la position des flocons
+        snowflake.position.x = (Math.random() - 0.5) * 20; // Variabilité sur l'axe x
+        snowflake.position.y = 5;
+        snowflake.position.z = (Math.random() - 0.5) * 20; // Variabilité sur l'axe z
+        snowflake.castShadow = true; // IMPORTANT FOR SHADOWS !!!
+        scene.add(snowflake);
+        snowflakes.push(snowflake);
+    }
+
+    function addSnowflakeWithDelay() {
+        // Ajouter un flocon avec un délai aléatoire entre 0 et 2000 millisecondes (2 secondes)
+        createSnowflake();
+        setTimeout(addSnowflakeWithDelay, Math.random() * 2000);
+    }
+
+    // Lancer le processus en ajoutant le premier flocon
+    addSnowflakeWithDelay();
+
+    /////////////
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        // Animation des flocons de neige
+        snowflakes.forEach(function (snowflake) {
+            snowflake.position.y -= 0.01;
+            if (snowflake.position.y < -5) {
+                snowflake.position.y = 5;
+                snowflake.position.x = (Math.random() - 0.5) * 10;
+                snowflake.position.z = (Math.random() - 0.5) * 10;
+            }
+        });
+
+        updateCameraPosition();
+
+
+        renderer.render(scene, camera);
+    }
+
+    window.addEventListener("resize", function () {
+        const newWidth = window.innerWidth;
+        const newHeight = window.innerHeight;
+
+        camera.aspect = newWidth / newHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(newWidth, newHeight);
+    });
+
+    animate();
+
+
+</script>
+          
+
+
+    </body>
+
+
+
+
+</html>

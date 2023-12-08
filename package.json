@@ -1,0 +1,20 @@
+{
+  "name": "ndi2023v1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.0.6"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "gltfloader": "github:codeurdenuit/GLTFLoader",
+    "jquery": "^3.7.1",
+    "three": "^0.159.0"
+  }
+}
